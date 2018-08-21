@@ -5,6 +5,8 @@ class = require "class"
 require "classes/crown"
 --for castle
 require "classes/castle"
+--for star
+require "classes/star"
 
 --getting state machine
 require "state_machine/machine"
