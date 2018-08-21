@@ -12,6 +12,6 @@ end
 function title:update()
     --if enter key was pressed exit
     if love.keyboard.keys["return"] or love.keyboard.keys["enter"] then
-      love.event.quit()
+      machine:change("play")
     end
 end

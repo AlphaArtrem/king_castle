@@ -19,7 +19,8 @@ function love.load()
     love.graphics.setFont(font)
     --intialising state machine with state objects form the state classes
     machine = machine{
-      ["title"] = function() return title() end
+      ["title"] = function() return title() end,
+      ["play"] = function() return play() end
     }
     --changing the state to title
     machine:change("title")
