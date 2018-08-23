@@ -16,3 +16,10 @@ require "state_machine/states/title"
 require "state_machine/states/base"
 --for play state
 require "state_machine/states/play"
+
+--function for collision
+require "functions/collision"
+
+--global variables
+level = 1
+health = 3

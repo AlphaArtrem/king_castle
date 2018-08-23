@@ -8,8 +8,11 @@ function machine:init(states)
 end
 
 --changing state
-function machine:change(state)
+function machine:change(state,params)
     self.current = self.states[state]()
+    if params then
+      self.current:init(params)
+    end
 end
 
 --update using current state update function

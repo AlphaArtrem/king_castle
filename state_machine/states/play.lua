@@ -1,15 +1,13 @@
 play = class{__include = base}
 
-function play:init(dx,dy,level)
+function play:init()
     --getting crown and castle class
     self.crown = crown()
     self.castle = castle()
 
-    --current play level
-    self.level = level or 1
-
     --getting stars
-    self.star = star(self.level)
+    self.stars = star()
+
 end
 
 function play:update(dt)
@@ -17,7 +15,17 @@ function play:update(dt)
       self.crown:update(dt)
 
       --updating stars
-      self.star:update(dt)
+      self.stars:update(dt)
+
+      --checking for collision
+      if collisionMulti(self.stars, self.crown) then
+          --if collided decrease health
+          health = health - 1
+      end
+      if collisionSingle(self.castle, self.crown) then
+          self.level = self.level + 1
+          machine:change("play")
+      end
 end
 
 function play:render()
@@ -26,5 +34,9 @@ function play:render()
     self.castle:render()
 
     --rendering stars
-    self.star:render()
+    self.stars:render()
+
+    --rederning health and level
+    love.graphics.printf("H:"..health, windowWidth /2 - 150 , 20, windowWidth - 40, "center")
+    love.graphics.printf(" L:"..level, windowWidth /2 - 30 , 20, windowWidth - 40, "center")
 end
