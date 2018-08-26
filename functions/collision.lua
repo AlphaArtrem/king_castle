@@ -3,34 +3,43 @@ function to detect collison between to objects given they have
 self.x, self.y, self.height and self.width as member variables
 ]]
 
-function collisionSingle(ob1, ob2)
+function collisionCastle(castle, crown)
     --check if collision happened with the left side
-    left = (ob1.x + ob1.width < ob2.x or ob1.y + ob1.height < ob2.y)
+    left = (castle.x + castle.width < crown.x or castle.y + castle.height < crown.y)
     --check if collsion happend with the right side
-    right = (ob2.x + ob2.width < ob1.x or ob2.y + ob2.height < ob1.y)
+    right = (crown.x + crown.width < castle.x or crown.y + crown.height < castle.y)
     --if any collsion happende return true else false
     if (left) or (right) then
-        return false
+        return
     else
-        return true
+        --if collided with castle increase level
+        level = level + 1
+        --then change state to new play
+        machine:change("play")
     end
 end
 
-function collisionMulti(ob1, ob2)
+--function for detecting collison with stars
+function collisionStars(stars, c, type)
     --[[
     check for alls stars
     do not index for height of width as they are not in stars but in the object
     ]]
-    for k, ob in pairs(ob1.stars) do
-        --check if collision happened with the left side
-        left = (ob.x + ob1.width < ob2.x or ob.y + ob1.height < ob2.y)
-        --check if collsion happend with the right side
-        right = (ob2.x + ob2.width < ob.x or ob2.y + ob2.height < ob.y)
-        --if any collsion happende return true else false
-        if (left) or (right) then
-            return false
+    for k, star in pairs(stars.stars) do
+        --if the star is touching crown or castle boundary reverse its direction
+        x = star.x > c.x + c.width or star.x + stars.width < c.x + 20
+        y = star.y > c.y + c.height or star.y + stars.height < c.y
+        if x then
+            ::continue::
+        elseif y then
+            ::continue::
         else
-            return true
-        end
+            --negate star direction
+            star.dx = -star.dx
+            --if collided with crown decrease health
+            if type == "crown" then
+              health = health - 1
+            end
+      end
     end
 end

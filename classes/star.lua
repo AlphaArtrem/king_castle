@@ -1,5 +1,6 @@
 star = class{}
 
+
 function star:init()
     --star image
     self.image = love.graphics.newImage("src/star.png")
@@ -22,7 +23,7 @@ function star:init()
       end
       self.stars[i] = {
           x = math.random(10, windowWidth - self.width -10),
-          y = math.random(self.height + 10, windowHeight - self.height - 10),
+          y = math.random(self.height + 40, windowHeight - self.height - 60),
           dx = v
       }
     end

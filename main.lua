@@ -1,6 +1,9 @@
 --adding header files
 require "headers"
 
+--global variables
+level = 1
+health = 3
 windowWidth = 1366
 windowHeight = 768
 

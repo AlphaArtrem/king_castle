@@ -19,7 +19,3 @@ require "state_machine/states/play"
 
 --function for collision
 require "functions/collision"
-
---global variables
-level = 1
-health = 3

@@ -18,14 +18,13 @@ function play:update(dt)
       self.stars:update(dt)
 
       --checking for collision
-      if collisionMulti(self.stars, self.crown) then
-          --if collided decrease health
-          health = health - 1
-      end
-      if collisionSingle(self.castle, self.crown) then
-          self.level = self.level + 1
-          machine:change("play")
-      end
+      --for star and crown collison
+      collisionStars(self.stars, self.crown, "crown")
+      --for castle and crown collsion
+      collisionCastle(self.castle, self.crown)
+      --for star and collison
+      collisionStars(self.stars, self.castle, "castle")
+
 end
 
 function play:render()
