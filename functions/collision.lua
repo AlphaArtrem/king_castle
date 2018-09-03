@@ -15,7 +15,7 @@ function collisionCastle(castle, crown)
         --if collided with castle increase level
         level = level + 1
         --then change state to new play
-        machine:change("play")
+        machine:change("state")
     end
 end
 

@@ -16,6 +16,8 @@ require "state_machine/states/title"
 require "state_machine/states/base"
 --for play state
 require "state_machine/states/play"
+--for new level title
+require "state_machine/states/state"
 
 --function for collision
 require "functions/collision"
