@@ -18,6 +18,8 @@ require "state_machine/states/base"
 require "state_machine/states/play"
 --for new level title
 require "state_machine/states/state"
+--for when dead
+require "state_machine/states/death"
 
 --function for collision
 require "functions/collision"

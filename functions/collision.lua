@@ -38,6 +38,7 @@ function collisionStars(stars, c, type)
             star.dx = -star.dx
             --if collided with crown decrease health
             if type == "crown" then
+              star.x = star.x + star.dx / 10
               health = health - 1
             end
       end

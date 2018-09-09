@@ -24,6 +24,10 @@ function play:update(dt)
       collisionCastle(self.castle, self.crown)
       --for star and collison
       collisionStars(self.stars, self.castle, "castle")
+      --when dead
+      if health == 0 then
+        machine:change("death")
+      end
 
 end
 
